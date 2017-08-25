@@ -1,0 +1,8 @@
+#+TITLE : Meeting 1
+#+AUTHOR : Aniruddha P. Deshpande
+
+* Meeting 1 
+- Date : 28/3/17
+- Day : Tuesday
+- Time : 8:25 PM
+- Minutes of Meeting : 35 min 
