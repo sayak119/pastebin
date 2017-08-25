@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'Cabin-Regular';
+    src: url(../fonts/Cabin-Regular.ttf) format('truetype');
+}
+
+body {
+    background-color: #dfe3ee;
+    font-family: Cabin-Regular;
+}
+
+
+.text_option{
+    border-right: 1px solid;
+    border-left: 1px solid;
+    border-color: #78909C;
+}
+
+.navbar-default {
+    background: #3b5998;
+    font-weight: bold;
+    color: #000000;
+}
+
+.frame {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+}
+
+.paste_textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #eeeff1;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    display: block;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.textarea_border {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.i_highlight {
+    float: right;
+    padding-right: 20px;
+    background-color: #dfe3ee;
+}
+.form_frame_left {
+    float: left;
+    max-width: 558px;
+    margin: 10px 10px 10px 0;
+    min-width: 460px;
+}
+
+.form_frame_full {
+    clear: both
+}
+
+.i_highlight {
+    background-size: 20px 20px;
+    border: 0;
+    cursor: pointer;
+    height: 20px;
+    padding-left: 20px;
+}
+
+.post_input{
+    background-color: #eeeff1; 
+}
+
+.button1 {
+    background-color: #B39DDB;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+h3 {
+    padding-top: 15px; 
+    color: #B39DDB;
+}
+
+hr {
+    border: 1px solid black;
+}
+
+p{
+    font-weight: bold;
+}

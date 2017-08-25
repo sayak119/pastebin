@@ -1,0 +1,92 @@
+    *, *:before, *:after {
+  box-sizing: border-box;
+}
+@font-face {
+    font-family: 'Cabin-SemiBold';
+    src: url(../fonts/Cabin-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Cabin-Regular';
+    src: url(../fonts/Cabin-Regular.ttf) format('truetype');
+}
+
+body {
+    background-color: #dfe3ee ;
+    font-family: Cabin-Regular;
+}
+
+.contact-form {
+    margin: 0 auto;
+    width: 40%;
+    background: #3b5998;
+    border-radius: 20px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: #3b5998;
+    font-size: 40px;
+    margin-top: 80px;
+}
+
+.signin {
+    margin-top: 80px;
+    padding: 35px 0 45px 0;
+    background-color: #3b5998;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.signin input[type="text"] {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    padding: 10px 35px 10px 10px;
+    border: none;
+    width: 90%;
+    font-family: Cabin-Regular;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.signin input[type="password"] {
+    margin-bottom: 20px;
+    font-size: 16px;
+    padding: 10px 35px 10px 10px;
+    border: none;
+    width: 90%;
+    font-family: Cabin-Regular;
+    color: gray;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.signin input[type="submit"] {
+    width: 90%;
+    height: 40px;
+    font-size: 16px;
+    padding: 10px 35px 10px 10px;
+    background-color: #5bc0de;
+    border: none;
+    color: #CBFDFD;
+    cursor: pointer;
+    outline: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.signin input[type="submit"]:hover {
+    background-color: #F50057;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}

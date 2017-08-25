@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MyPastes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/mypaste_admin.js"></script>
+    <link rel="stylesheet" href="../static/css/mypaste.css" type="text/css" media="all">
+    <!-- <link rel="stylesheet" type="text/css" href="../plugins/codemirror/lib/codemirror.css"> -->
+    <!-- <script type="text/javascript" src="../plugins/codemirror/lib/codemirror.js"></script> -->
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/admin">PasteBin</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="admin"><span class="glyphicon glyphicon-plus"></span> New Paste</a></li>
+                    <li class="active"><a><span class="glyphicon glyphicon-list"></span> My Paste</a></li>
+                    <li><a href="allusers"><span class="glyphicon glyphicon-user"></span> All Users</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-text">{{name}}</li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container text_option">
+        <div class="frame">
+            <div class="form-group row">
+                <input type="search" id="search" class="form-control search" placeholder="Search">
+            </div>
+            <table class="table row" id="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Added</th>
+                        <th>Expires</th>
+                        <th>Syntax</th>
+                    </tr>
+                </thead>
+                <tbody id="paste_table">
+                    <!-- <tr>
+                        <th scope="row"><a href="#">p27</a></th>
+                        <td>Mar 31st,17</td>
+                        <td>Never</td>
+                        <td>C</td>
+                        <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                    </tr> -->
+                    <!-- {% for paste in paste_list %}
+                    <tr>
+                        <td scope="row"><a href="{{paste.url}}"> {{paste.title}} </a> </td>
+                        <td>{{paste.add_time}}</td>
+                        <td>{{paste.expire_time}}</td>
+                        <td>{{paste.lang}}</td>
+                        <td><a href="{{paste.url}}/edit"><span class="glyphicon glyphicon-pencil" id = "edit_link"></span></a>
+                            <a href="#"><span class="glyphicon glyphicon-remove" id = "delete_link"></span></a>
+                        </td>
+                    </tr>
+                    {% endfor %} -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

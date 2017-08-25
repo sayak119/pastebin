@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <!-- <script type="application/x-javascript">
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+    </script> -->
+    <link rel="stylesheet" href="../static/css/login.css" type="text/css" media="all">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/login.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>LOGIN TO CONTINUE</h1>
+        <div class="contact-form">
+            <div class="signin">
+                <form>
+
+                    <input type="text" name="username" class="user" id="user_name" value="Enter Your Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" />
+                    <input type="password" name="password" class="pass" id="pass" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" />
+                    <input type="submit" value="Login" id="login_submit"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

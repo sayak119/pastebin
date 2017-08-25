@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <!-- <script type="application/x-javascript">
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+    </script> -->
+    <link rel="stylesheet" href="../static/css/register.css" type="text/css" media="all">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/register.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>REGISTER AS A USER</h1>
+        <div class="contact-form">
+            <div class="signin">
+                <form>
+                    <input type="text" name="username" id="reg_username" class="user" value="Enter Your Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" />
+                    <input type="text" name="email" id="reg_email" class="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" />
+                    <input type="password" name="password" id="reg_pass" class="pass" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" />
+                    <input type="password" name="re-password" id="reg_passcheck" class="pass" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" />
+                    <input type="submit" value="Register" id="reg_submit"/>
+                    <!-- <p><a href="#">Lost your password?</a></p> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

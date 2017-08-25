@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Pastes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/mypaste.js"></script>
+    <link rel="stylesheet" href="../static/css/mypaste.css" type="text/css" media="all">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/create_paste">PasteBin</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="create_paste"><span class="glyphicon glyphicon-plus"></span> New Paste</a></li>
+                    <li class="active"><a><span class="glyphicon glyphicon-list"></span> My Paste</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-text">{{name}}</li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container text_option">
+        <div class="frame">
+            <div class="form-group row">
+                <input type="search" id="search" class="form-control search" placeholder="Search">
+            </div>
+            <table class="table row" id="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Added</th>
+                        <th>Expires</th>
+                        <th>Syntax</th>
+                    </tr>
+                </thead>
+                <tbody id="paste_table">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

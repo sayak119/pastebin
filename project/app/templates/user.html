@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/pastebin.js"></script>
+    <link rel="stylesheet" href="../static/css/pastebin.css" type="text/css" media="all">
+    <!-- <link rel="stylesheet" type="text/css" href="../plugins/codemirror/lib/codemirror.css"> -->
+    <!-- <script type="text/javascript" src="../plugins/codemirror/lib/codemirror.js"></script> -->
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/create_paste">PasteBin</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a><span class="glyphicon glyphicon-plus"></span> New Paste</a></li>
+                    <li><a href="/paste"><span class="glyphicon glyphicon-list"></span> My Paste</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-text">{{username}}</li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="content_right">
+        <div class="content_right_menu">
+            <div id="menu_2">
+                <ul class="right_menu">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container text_option">
+        <div class="row">
+            <div class="cols-xs-12">
+                <button onclick="selectPasteContent();" title="Highlight selected text" class="i_highlight" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                <form class="paste_form" id="myform" enctype="multipart/form-data" name="myform" onsubmit="document.getElementById('submit').disabled=true;document.getElementById('submit').value='Please wait...';">
+                    <div class="form-horizontal">
+                        <div class="textarea_border">
+                            <textarea name="text" class="paste_textarea" rows="20" id="paste_code" placeholder="Paste your code here"></textarea>
+                        </div>
+                        <div class="frame">
+                            <div class="content_title form-group">
+                                <h3>Optional Paste Settings</h3></div>
+                            <hr>
+                            <div class="form_frame_left" style="width:460px;min-width:460px">
+                                <div class="form_frame form-group">
+                                    <div class="form_left">
+                                        <label for="post_input">
+                                            <h5>Syntax Highlighting:</h5></label>
+                                    </div>
+                                    <div class="form_right">
+                                        <select class="post_select select2_search form-control" id="post_input" name="lang">
+                                            <option value="1">None</option>
+                                            <option value="1" disabled="disabled">------ POPULAR LANGUAGES -------</option>
+                                            <option value="bash">Bash</option>
+                                            <option value="c">C</option>
+                                            <option value="c#">C#</option>
+                                            <option value="c++">C++</option>
+                                            <option value="css">CSS</option>
+                                            <option value="java">Java</option>
+                                            <option value="js">JavaScript</option>
+                                            <option value="json">JSON</option>
+                                            <option value="php">PHP</option>
+                                            <option value="perl">PERL</option>
+                                            <option value="1" disabled="disabled">------ OTHER LANGUAGES -------</option>
+                                            <option value="ruby">RUBY</option>
+                                            <option value="sql">SQL</option>
+                                            <option value="xml">XML</option>
+                                            <option value="html">HTML</option>
+                                            <option value="html">HTML 5</option>
+                                            <option value="py">PYTHON</option>
+                                            <option value="apache">APACHE</option>
+                                            <option value="coffescript">COFEESCRIPT</option>
+                                            <option value="django">DJANGO</option>
+                                            <option value="http">HTTP</option>
+                                            <option value="hs">HASKELL</option>
+                                            <option value="ini">INI</option>
+                                            <option value="makefile">MAKEFILE</option>
+                                            <option value="nginx">NGINX</option>
+                                            <option value="objectivec">OBJECTIVE-C</option>
+                                            <option value="html">HTML</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form_frame form-group">
+                                    <div class="form_left">
+                                        <label for="datetime-local">
+                                            <h5>Paste Expiration:</h5></label>
+                                    </div>
+                                    <div class="form_right">
+                                        <input type="text" id="datetimepicker" name="time" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form_frame form-group">
+                                    <div class="form_left">
+                                        <label for="post_select">
+                                            <h5>Paste Exposure:</h5></label>
+                                    </div>
+                                    <div class="form_right">
+                                        <select class="post_select select2_nosearch form-control" id="post_type" name="paste_private">
+                                            <option value="0" selected="selected">Public</option>
+                                            <option value="1">Private</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form_frame form-group">
+                                    <div class="form_left">
+                                        <label for="post_name">
+                                            <h5>Paste Name / Title:</h5></label>
+                                    </div>
+                                    <div class="form_right">
+                                        <input type="text" name="title" size="20" maxlength="60" value="" class="post_input form-control" id="post_name" />
+                                    </div>
+                                </div>
+                                <div class="form_frame form-group">
+                                    <div class="form_left">
+                                        &nbsp;
+                                    </div>
+                                    <div class="form_right">
+                                        <input name="submit" type="submit" value="Create New Paste" id="submit_paste" accesskey="s" class="btn btn-info button1" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<link rel="stylesheet" type="text/css" href="../static/css/jquery.datetimepicker.css">
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script src="../static/js/jquery.datetimepicker.full.js"></script>
+<script type="text/javascript" src="../static/js/datetime.js"></script>
+
+</html>
