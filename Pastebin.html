@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Pastebin</title>
+<!-- 2017-04-29 Sat 07:48 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="SAMYAK AGARWAL (20161180), ANIRUDDHA P. DESHPANDE (20161058), KANAV GUPTA (20161151), SAYAK KUNDU (20161035)" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Pastebin</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Overview</a></li>
+<li><a href="#sec-2">2. Goals</a></li>
+<li><a href="#sec-3">3. Features</a></li>
+<li><a href="#sec-4">4. Application Structure</a></li>
+<li><a href="#sec-5">5. Implementation</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Flask</a>
+<ul>
+<li><a href="#sec-5-1-1">5.1.1. Example</a></li>
+<li><a href="#sec-5-1-2">5.1.2. Official <b>Flask documentation</b> here.</a></li>
+<li><a href="#sec-5-1-3">5.1.3. Backend</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-2">5.2. highlight.js</a></li>
+<li><a href="#sec-5-3">5.3. Download</a></li>
+<li><a href="#sec-5-4">5.4. Embed</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Deployment</a>
+<ul>
+<li><a href="#sec-6-1">6.1. nginx</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. Self-Signed SSL Certificate</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Overview</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A pastebin is a text storage site. It is mostly used for sharing source code snippets for code review and sharing. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Goals</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+To implement a pastebin like web application which supports basic features. 
+Features
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Features</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><code>Syntax highlighting</code>
+</li>
+<li><code>Paste expiration</code>
+</li>
+<li><code>Guest and member privileges</code>
+</li>
+<li><code>Edit and  delete your pastes</code>
+</li>
+<li><code>View all your pastes (for members only)</code>
+</li>
+<li><code>Download codes</code>
+</li>
+<li><code>Embed</code>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Application Structure</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<a href="https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=structure.xml#R5VnLbtwgFP0aLyvZxp7HMq+2i1aKlEpdE5vYpB5jAZPM5OsLBj/wnSQT1zOVnCwifAwXOOdcwIyHrja7bxxX+U+WksIL/XTnoWsvDFfLhfqvgb0BIj8wQMZpaqAecEdfiAV9i25pSoRTUTJWSFq5YMLKkiTSwTDn7Nmt9sAKt9cKZwQAdwkuIPqbpjK304r9Dv9OaJY3PQe+fXOPkz8ZZ9vS9ueF6KH+M683uIll64scp+y5B6EbD11xxqQpbXZXpNDUNrSZdl9feduOm5NSHtPA6iTkvpk6SRUT9pFxmbOMlbi46dDLenpEB/DVUy43hSoGqvhIpNxbMfFWMgV1EX4wVtl6pk/d0aujtpBgW57YWqilR7mOsA2RfK+qcFJgSZ/cUNjqn7X12qa3jKpOQt9aNQzXpol1KmqUaUJIzDMibauOSVXoDaODan4Pc41M4CdcbO1ob7GQ5J6WQARJdtLllhNBX/B9XUHTXukB1UOML734WiGacWHI1w1wQbNSlQvyoEM9ES6pMviFhaVW41JUOKFl9quW5kvUaqNrk93b6kApmgZrl9KgofS5S6WFhfJeFg2Z74vn0P4Gx0vAMTR4mV7oJUI9JQUWgiYu08e6E86/N7/4wPwa7F8di3yX3sWAN5M0wLEw0OqdQNNZfwVkqTh71Cv3rJwPGI2h8w85YwrnN1vnkdYvWUnG+V5txbUvesr+r1RAfuzw3fL/0VRAg5xq2XwnFRSbeN+rZr159ICbfjuNTcSxeRaE81//UDDQyh8r+uKdQNOtfwHc+3FVzWvxG9IZrFZg8YtOtfhFZ1v8+kfS4JUz6ZkOAr5LOIrHJsJg2zrhGThYAKEqfQieVypE0XBlgalwsnPAJzgCDw0LiDvW+UCo0zm/meWn0iWaSpdhoAl1gUemrSB85gtSeL69+cC9x/yNP/abHAh1um/yMAa6CKlISGZu/eiM1oennflbf+w3OBBqGGhC68MzkiSbSvFAxMzdv4Q3UstTuR/e+s3e/WjsZcRQKBBoQvevgS6cVIzP7DIWWH8dAutP9BGmHruf7Iwi3c+i6OYv">structure</a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Implementation</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Flask</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+This project of pastebin has been implemented using Flask. Flask is called a micro framework because it does not require particular tools or libraries. 
+It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions. 
+However, Flask supports extensions that can add application features as if they were implemented in Flask itself. Extensions exist for object-relational mappers, 
+form validation, upload handling, various open authentication technologies and several common framework related tools. Extensions are updated far more regularly 
+than the core Flask program. 
+</p>
+
+<ul class="org-ul">
+<li><code>Contains development server and debugger</code>
+</li>
+<li><code>Uses /Jinja2/ templating</code>
+</li>
+<li><code>Support for secure cookies (client side sessions)</code>
+</li>
+<li><code>Integrated support for unit testing</code>
+</li>
+<li><code>*RESTful* request dispatching</code>
+</li>
+<li><code>Extensions available to enhance features desired</code>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> Example</h4>
+<div class="outline-text-4" id="text-5-1-1">
+</div><ol class="org-ol"><li><a id="sec-5-1-1-1" name="sec-5-1-1-1"></a>A simple web application to print “Hello World!”<br  /><div class="outline-text-5" id="text-5-1-1-1">
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #a020f0;">from</span> flask <span style="color: #a020f0;">import</span> Flask
+<span style="color: #a0522d;">app</span> = Flask(<span style="color: #483d8b;">__name__</span>)
+
+<span style="color: #228b22;">@app.route</span>(<span style="color: #8b2252;">"/"</span>)
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">hello</span>():
+    <span style="color: #a020f0;">return</span> <span style="color: #8b2252;">"Hello World!"</span>
+
+<span style="color: #a020f0;">if</span> <span style="color: #483d8b;">__name__</span> == <span style="color: #8b2252;">"__main__"</span>:
+    app.run()
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-5-1-2" class="outline-4">
+<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> Official <b>Flask documentation</b> <a href="http://flask.pocoo.org/docs/0.12/">here</a>.</h4>
+</div>
+<div id="outline-container-sec-5-1-3" class="outline-4">
+<h4 id="sec-5-1-3"><span class="section-number-4">5.1.3</span> Backend</h4>
+<div class="outline-text-4" id="text-5-1-3">
+</div><ol class="org-ol"><li><a id="sec-5-1-3-0-1" name="sec-5-1-3-0-1"></a>Paste<br  /><div class="outline-text-6" id="text-5-1-3-0-1">
+<p>
+Our project supports paste feature for 2 types of users:
+</p>
+<ol class="org-ol">
+<li><b>Guests</b>
+</li>
+<li><b>Registered users</b>
+</li>
+</ol>
+<div class="org-src-container">
+
+<pre class="src src-python" id="create_paste"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">create_paste</span>():
+    <span style="color: #a0522d;">title</span> = request.form[<span style="color: #8b2252;">'title'</span>]
+    <span style="color: #a0522d;">text</span> = request.form[<span style="color: #8b2252;">'text'</span>]
+    <span style="color: #a0522d;">user_id</span> = session[<span style="color: #8b2252;">'user_id'</span>]
+    <span style="color: #a0522d;">lang</span> = request.form[<span style="color: #8b2252;">'lang'</span>]
+    <span style="color: #a0522d;">time_form</span> = request.form[<span style="color: #8b2252;">'time'</span>]
+    <span style="color: #a0522d;">expire_time</span> = <span style="color: #483d8b;">str</span>(time_form)
+    <span style="color: #a0522d;">add_time</span> = <span style="color: #483d8b;">str</span>(datetime.now())
+    <span style="color: #a0522d;">url</span> = <span style="color: #483d8b;">str</span>(uuid.uuid4())
+    <span style="color: #a0522d;">report_count</span> = 0
+    <span style="color: #a020f0;">try</span>:
+        <span style="color: #a0522d;">paste</span> = Paste(title, text, lang, add_time,
+                      expire_time, user_id, url, report_count)
+        db.session.add(paste)
+        db.session.commit()
+        <span style="color: #b22222;"># </span><span style="color: #b22222;">jsonify(success=True, paste=paste.to_dict())</span>
+        <span style="color: #a020f0;">return</span> jsonify({<span style="color: #8b2252;">'url'</span>: url}), 200
+    <span style="color: #a020f0;">except</span>:
+        <span style="color: #a020f0;">return</span> jsonify({<span style="color: #8b2252;">'error'</span>: <span style="color: #8b2252;">'Error while creating Paste, Please check if all fields are filled'</span>}), 400
+</pre>
+</div>
+
+<p>
+Certain characteristics are related to the paste feature which define its proper working. 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">__init__</span>(<span style="color: #a020f0;">self</span>, title, text, lang, add_time, expire_time, user_id, url, report_count):
+        <span style="color: #a020f0;">self</span>.title = title
+        <span style="color: #a020f0;">self</span>.text = text
+        <span style="color: #a020f0;">self</span>.lang = lang
+        <span style="color: #a020f0;">self</span>.add_time = add_time
+        <span style="color: #a020f0;">self</span>.expire_time = expire_time
+        <span style="color: #a020f0;">self</span>.user_id = user_id
+        <span style="color: #a020f0;">self</span>.url = url
+        <span style="color: #a020f0;">self</span>.report_count = report_count
+</pre>
+</div>
+<p>
+The variable names are self-explanatory.
+We can choose paste <b>language</b>, <b>expiry time</b> and <b>title</b>. After the paste is done we get a unque URL which can be shared
+with other people so that they can have a look at your paste.
+</p>
+
+<p>
+<b>edit<sub>paste</sub></b>, <b>get<sub>all</sub><sub>pastes</sub></b>, <b>delete<sub>paste</sub></b> features are supported for registered users only.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python" id="edit_paste"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">edit_paste</span>(url):
+    <span style="color: #a020f0;">if</span> <span style="color: #8b2252;">'user_id'</span> <span style="color: #a020f0;">in</span> session:
+        <span style="color: #a0522d;">user_id</span> = session[<span style="color: #8b2252;">'user_id'</span>]
+        <span style="color: #a0522d;">paste</span> = Paste.query.<span style="color: #483d8b;">filter</span>(Paste.url == url).first()
+        <span style="color: #a020f0;">if</span> paste.user_id != user_id:
+            <span style="color: #a020f0;">return</span> jsonify(success=<span style="color: #008b8b;">False</span>, reply=<span style="color: #8b2252;">"Not Authorized"</span>), 404
+        <span style="color: #a0522d;">title</span> = request.form[<span style="color: #8b2252;">'title'</span>]
+        <span style="color: #a0522d;">text</span> = request.form[<span style="color: #8b2252;">'text'</span>]
+        <span style="color: #a0522d;">lang</span> = request.form[<span style="color: #8b2252;">'lang'</span>]
+        <span style="color: #a0522d;">time_form</span> = request.form[<span style="color: #8b2252;">'time'</span>]
+        <span style="color: #a0522d;">expire_time</span> = <span style="color: #483d8b;">str</span>(time_form)
+
+        <span style="color: #a0522d;">paste.title</span> = title
+        <span style="color: #a0522d;">paste.text</span> = text
+        <span style="color: #a0522d;">paste.lang</span> = lang
+        <span style="color: #a0522d;">paste.expire_time</span> = expire_time
+        db.session.commit()
+        <span style="color: #a020f0;">return</span> jsonify(success=<span style="color: #008b8b;">True</span>, url=url)
+    <span style="color: #a020f0;">return</span> jsonify(success=<span style="color: #008b8b;">False</span>, reply=<span style="color: #8b2252;">"Please Login"</span>)
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-python" id="get_all_pastes"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">get_all_pastes</span>():
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">user_id = session['user_id']</span>
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">pastes = paste.query.filter(paste.user_id == user_id).all()</span>
+    <span style="color: #a0522d;">curr_id</span> = session[<span style="color: #8b2252;">'user_id'</span>]
+    <span style="color: #a0522d;">paste_list</span> = Paste.query.<span style="color: #483d8b;">filter</span>(curr_id == Paste.user_id).<span style="color: #483d8b;">all</span>()
+    <span style="color: #a0522d;">url_pre</span> = <span style="color: #8b2252;">"/"</span>
+    <span style="color: #a020f0;">for</span> paste <span style="color: #a020f0;">in</span> paste_list:
+        <span style="color: #a0522d;">paste.url</span> = url_pre + paste.url
+    <span style="color: #a020f0;">return</span> render_template(<span style="color: #8b2252;">'mypaste.html'</span>, paste_list=paste_list)
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">return jsonify(success=True, pastes=[paste.to_dict() for paste in</span>
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">pastes])</span>
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-python" id="delete_paste"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">delete_paste</span>(url):
+    <span style="color: #a0522d;">user_id</span> = session[<span style="color: #8b2252;">'user_id'</span>]
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">print(user_id)</span>
+    <span style="color: #a0522d;">paste</span> = Paste.query.<span style="color: #483d8b;">filter</span>(
+        Paste.url == url, Paste.user_id == user_id).first()
+    <span style="color: #a020f0;">if</span> paste <span style="color: #a020f0;">is</span> <span style="color: #008b8b;">None</span>:
+        <span style="color: #a020f0;">return</span> jsonify(success=<span style="color: #008b8b;">False</span>), 404
+    <span style="color: #a020f0;">else</span>:
+        db.session.delete(paste)
+        db.session.commit()
+        <span style="color: #a020f0;">return</span> jsonify(success=<span style="color: #008b8b;">True</span>), 200
+</pre>
+</div>
+
+<p>
+Our web apllication also supports downloadin of the shared snippets of codes.  
+</p>
+</div>
+</li>
+
+<li><a id="sec-5-1-3-0-2" name="sec-5-1-3-0-2"></a>User<br  /><div class="outline-text-6" id="text-5-1-3-0-2">
+<p>
+Users can make a paste either as a guest or by logging in or registering as a new user.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python" id="for-registerd-user"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">__init__</span>(<span style="color: #a020f0;">self</span>, username, email, password, paste_count, user_type):
+    <span style="color: #a020f0;">self</span>.username = username
+    <span style="color: #a020f0;">self</span>.email = email
+    <span style="color: #a020f0;">self</span>.password = generate_password_hash(password)
+    <span style="color: #a020f0;">self</span>.paste_count = paste_count
+    <span style="color: #a020f0;">self</span>.user_type = user_type
+</pre>
+</div>
+<pre class="example" id="for-guest-user">
+</pre>
+
+<p>
+User is identified by its <b>username</b> and <b>password</b>.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python" id="login"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">login_user</span>():
+    <span style="color: #a020f0;">try</span>:
+        <span style="color: #a0522d;">username</span> = request.form[<span style="color: #8b2252;">'username'</span>]
+        <span style="color: #a0522d;">password</span> = request.form[<span style="color: #8b2252;">'password'</span>]
+    <span style="color: #a020f0;">except</span> <span style="color: #228b22;">KeyError</span> <span style="color: #a020f0;">as</span> e:
+        <span style="color: #a020f0;">return</span> jsonify({<span style="color: #8b2252;">'error'</span>: <span style="color: #8b2252;">'All Credentials not filled'</span>}), 400
+
+    <span style="color: #a0522d;">user</span> = User.query.<span style="color: #483d8b;">filter</span>(User.username == username).first()
+    <span style="color: #a020f0;">if</span>(user <span style="color: #a020f0;">is</span> <span style="color: #008b8b;">None</span> <span style="color: #a020f0;">or</span> <span style="color: #a020f0;">not</span> user.check_password(password)):
+        <span style="color: #a020f0;">return</span> jsonify({<span style="color: #8b2252;">'error'</span>: <span style="color: #8b2252;">'Invalid Username , User doesnt exist'</span>}), 400
+
+    <span style="color: #a0522d;">session</span>[<span style="color: #8b2252;">'user_id'</span>] = user.<span style="color: #483d8b;">id</span>
+
+    <span style="color: #a020f0;">return</span> jsonify({<span style="color: #8b2252;">'succes'</span>: <span style="color: #8b2252;">'Login successful'</span>}), 200
+</pre>
+</div>
+
+<p>
+For registering, a user must input his <b>email-id</b>, <b>username</b> and <b>password</b>.
+<code>password</code> is stored in encrypted form (not in clear-text) to enhace security.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python" id="register_user"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">register_user</span>():
+    <span style="color: #a0522d;">username</span> = request.form[<span style="color: #8b2252;">'username'</span>]
+    <span style="color: #a0522d;">email</span> = request.form[<span style="color: #8b2252;">'email'</span>]
+    <span style="color: #a0522d;">password</span> = request.form[<span style="color: #8b2252;">'password'</span>]
+
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">except KeyError as e:</span>
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">return render_template('register.html',error = "%s not sent in the</span>
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">request" % e.args)</span>
+
+    <span style="color: #a020f0;">if</span> <span style="color: #8b2252;">'@'</span> <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">in</span> email:
+        <span style="color: #a020f0;">return</span> jsonify({<span style="color: #8b2252;">'error'</span>: <span style="color: #8b2252;">'@ not added in email'</span>}), 400
+
+    <span style="color: #a0522d;">u</span> = User(username, email, password, 0, 1)
+    db.session.add(u)
+    <span style="color: #a020f0;">try</span>:
+        db.session.commit()
+    <span style="color: #a020f0;">except</span> IntegrityError <span style="color: #a020f0;">as</span> e:
+        <span style="color: #a020f0;">return</span> jsonify({<span style="color: #8b2252;">'error'</span>: <span style="color: #8b2252;">'Invalid Credentials'</span>}), 400
+
+    <span style="color: #a020f0;">return</span> jsonify({<span style="color: #8b2252;">'success'</span>: <span style="color: #8b2252;">'User Registeration successful'</span>}), 200
+</pre>
+</div>
+<p>
+Admin feature has also been added.
+</p>
+</div>
+</li>
+
+<li><a id="sec-5-1-3-0-3" name="sec-5-1-3-0-3"></a>Report<br  /><div class="outline-text-6" id="text-5-1-3-0-3">
+<p>
+Pastebin also has the a feature to report pastes which users find offensive.
+Only registered users can report pastes along with the reason to do so.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python" id="report_paste"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">__init__</span>(<span style="color: #a020f0;">self</span>, paste_id, reason, reporter_id):
+        <span style="color: #a020f0;">self</span>.paste_id = paste_id
+        <span style="color: #a020f0;">self</span>.reason = reason
+        <span style="color: #a020f0;">self</span>.reporter_id = reporter_id
+</pre>
+</div>
+
+<p>
+A paste is checked according to its <b>paste id</b> and removed after certain number of reports.
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> highlight.js</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+The main feature of pastebin is syntax highlighting, that is, to be able to select the language of paste. This project supports {} languages as of now. This feature was implemented  by using <code>highlight.js</code>. 
+<b>highlight.js</b> is used for syntax highlighting for web. In most of the cases it detects the language automatically.  
+The bare minimum for using highlight.js on a web page is linking to the library along with one of the styles and calling <code>initHighlightingOnLoad</code>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #0000ff;">link</span> <span style="color: #a0522d;">rel</span>=<span style="color: #8b2252;">"stylesheet"</span> <span style="color: #a0522d;">href</span>=<span style="color: #8b2252;">"/path/to/styles/default.css"</span>&gt;
+&lt;<span style="color: #0000ff;">script</span> <span style="color: #a0522d;">src</span>=<span style="color: #8b2252;">"/path/to/highlight.pack.js"</span>&gt;&lt;/<span style="color: #0000ff;">script</span>&gt;
+&lt;<span style="color: #0000ff;">script</span>&gt;hljs.initHighlightingOnLoad();&lt;/<span style="color: #0000ff;">script</span>&gt;
+</pre>
+</div>
+
+<p>
+This method will find and highlight the code inside of <b>&lt;pre&gt;&lt;code&gt;</b> tags; it tries to detect the language automatically. If automatic detection doesn’t work for you, 
+you can specify the language in the <b>class</b> attribute or can be asked as an input (like in our project) from the user.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #0000ff;">pre</span>&gt;&lt;<span style="color: #0000ff;">code</span> <span style="color: #a0522d;">class</span>=<span style="color: #8b2252;">"C"</span>&gt;...&lt;/<span style="color: #0000ff;">code</span>&gt;&lt;/<span style="color: #0000ff;">pre</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Download</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+The user can download the code according to the language extension given by the owner
+of the paste.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Embed</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+It is used to include codes saved in pastebin in your websites.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Deployment</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> nginx</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+To Deploy python apps, we use <b>nginx</b> as a <b>reverse proxy server</b>. We use <b>uWSGI</b> with nginx to deploy python apps like flask. 
+Insight about WSGI - Web Server Gateway Interface (WSGI) is a specification for simple and universal interface between 
+web servers and web applications.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Self-Signed SSL Certificate</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+A self-signed certificate will not validate the identity of your server 
+for your users since it is not signed by one of their web browser's trusted 
+certificate authorities, but it will allow you to encrypt communications with your web clients. 
+example : <i><b>digicert</b></i> is a trustworthy SSL certificates provider.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 29 April, 2017</p>
+<p class="author">Author: SAMYAK AGARWAL (20161180), ANIRUDDHA P. DESHPANDE (20161058), KANAV GUPTA (20161151), SAYAK KUNDU (20161035)</p>
+<p class="date">Created: 2017-04-29 Sat 07:48</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

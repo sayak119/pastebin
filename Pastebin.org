@@ -1,0 +1,270 @@
+﻿#+TITLE: Pastebin
+#+DATE: 29 April, 2017 
+#+AUTHOR: SAMYAK AGARWAL (20161180), ANIRUDDHA P. DESHPANDE (20161058), KANAV GUPTA (20161151), SAYAK KUNDU (20161035)
+#+SETUPFILE: theme-readtheorg.setup
+
+* Overview
+A pastebin is a text storage site. It is mostly used for sharing source code snippets for code review and sharing. 
+
+* Goals
+To implement a pastebin like web application which supports basic features. 
+Features
+
+* Features
+  - =Syntax highlighting=
+  - =Paste expiration=
+  - =Guest and member privileges=
+  - =Edit and  delete your pastes=
+  - =View all your pastes (for members only)=
+  - =Download codes=
+  - =Embed=
+* Application Structure
+  [[https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=structure.xml#R5VnLbtwgFP0aLyvZxp7HMq%2B2i1aKlEpdE5vYpB5jAZPM5OsLBj%2FwnSQT1zOVnCwifAwXOOdcwIyHrja7bxxX%2BU%2BWksIL%2FXTnoWsvDFfLhfqvgb0BIj8wQMZpaqAecEdfiAV9i25pSoRTUTJWSFq5YMLKkiTSwTDn7Nmt9sAKt9cKZwQAdwkuIPqbpjK304r9Dv9OaJY3PQe%2BfXOPkz8ZZ9vS9ueF6KH%2BM683uIll64scp%2By5B6EbD11xxqQpbXZXpNDUNrSZdl9feduOm5NSHtPA6iTkvpk6SRUT9pFxmbOMlbi46dDLenpEB%2FDVUy43hSoGqvhIpNxbMfFWMgV1EX4wVtl6pk%2Fd0aujtpBgW57YWqilR7mOsA2RfK%2BqcFJgSZ%2FcUNjqn7X12qa3jKpOQt9aNQzXpol1KmqUaUJIzDMibauOSVXoDaODan4Pc41M4CdcbO1ob7GQ5J6WQARJdtLllhNBX%2FB9XUHTXukB1UOML734WiGacWHI1w1wQbNSlQvyoEM9ES6pMviFhaVW41JUOKFl9quW5kvUaqNrk93b6kApmgZrl9KgofS5S6WFhfJeFg2Z74vn0P4Gx0vAMTR4mV7oJUI9JQUWgiYu08e6E86%2FN7%2F4wPwa7F8di3yX3sWAN5M0wLEw0OqdQNNZfwVkqTh71Cv3rJwPGI2h8w85YwrnN1vnkdYvWUnG%2BV5txbUvesr%2Br1RAfuzw3fL%2F0VRAg5xq2XwnFRSbeN%2BrZr159ICbfjuNTcSxeRaE81%2F%2FUDDQyh8r%2BuKdQNOtfwHc%2B3FVzWvxG9IZrFZg8YtOtfhFZ1v8%2BkfS4JUz6ZkOAr5LOIrHJsJg2zrhGThYAKEqfQieVypE0XBlgalwsnPAJzgCDw0LiDvW%2BUCo0zm%2FmeWn0iWaSpdhoAl1gUemrSB85gtSeL69%2BcC9x%2FyNP%2FabHAh1um%2FyMAa6CKlISGZu%2FeiM1oennflbf%2Bw3OBBqGGhC68MzkiSbSvFAxMzdv4Q3UstTuR%2Fe%2Bs3e%2FWjsZcRQKBBoQvevgS6cVIzP7DIWWH8dAutP9BGmHruf7Iwi3c%2Bi6OYv][structure]]
+* Implementation
+  
+** Flask
+This project of pastebin has been implemented using Flask. Flask is called a micro framework because it does not require particular tools or libraries. 
+It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions. 
+However, Flask supports extensions that can add application features as if they were implemented in Flask itself. Extensions exist for object-relational mappers, 
+form validation, upload handling, various open authentication technologies and several common framework related tools. Extensions are updated far more regularly 
+than the core Flask program. 
+
++ =Contains development server and debugger=
++ =Uses /Jinja2/ templating=
++ =Support for secure cookies (client side sessions)=
++ =Integrated support for unit testing=
++ =*RESTful* request dispatching=
++ =Extensions available to enhance features desired=
+*** Example
+**** A simple web application to print “Hello World!”
+#+BEGIN_SRC python
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run()
+#+END_SRC
+
+*** Official *Flask documentation* [[http://flask.pocoo.org/docs/0.12/][here]].
+*** Backend
+***** Paste
+Our project supports paste feature for 2 types of users:
+    1. *Guests*
+    2. *Registered users*
+#+NAME: create_paste
+#+BEGIN_SRC python
+def create_paste():
+    title = request.form['title']
+    text = request.form['text']
+    user_id = session['user_id']
+    lang = request.form['lang']
+    time_form = request.form['time']
+    expire_time = str(time_form)
+    add_time = str(datetime.now())
+    url = str(uuid.uuid4())
+    report_count = 0
+    try:
+        paste = Paste(title, text, lang, add_time,
+                      expire_time, user_id, url, report_count)
+        db.session.add(paste)
+        db.session.commit()
+        # jsonify(success=True, paste=paste.to_dict())
+        return jsonify({'url': url}), 200
+    except:
+        return jsonify({'error': 'Error while creating Paste, Please check if all fields are filled'}), 400
+
+#+END_SRC
+
+Certain characteristics are related to the paste feature which define its proper working. 
+#+BEGIN_SRC python
+def __init__(self, title, text, lang, add_time, expire_time, user_id, url, report_count):
+        self.title = title
+        self.text = text
+        self.lang = lang
+        self.add_time = add_time
+        self.expire_time = expire_time
+        self.user_id = user_id
+        self.url = url
+        self.report_count = report_count
+
+#+END_SRC
+The variable names are self-explanatory.
+We can choose paste *language*, *expiry time* and *title*. After the paste is done we get a unque URL which can be shared
+with other people so that they can have a look at your paste.
+
+*edit_paste*, *get_all_pastes*, *delete_paste* features are supported for registered users only.
+#+NAME: edit_paste
+#+BEGIN_SRC python
+def edit_paste(url):
+    if 'user_id' in session:
+        user_id = session['user_id']
+        paste = Paste.query.filter(Paste.url == url).first()
+        if paste.user_id != user_id:
+            return jsonify(success=False, reply="Not Authorized"), 404
+        title = request.form['title']
+        text = request.form['text']
+        lang = request.form['lang']
+        time_form = request.form['time']
+        expire_time = str(time_form)
+
+        paste.title = title
+        paste.text = text
+        paste.lang = lang
+        paste.expire_time = expire_time
+        db.session.commit()
+        return jsonify(success=True, url=url)
+    return jsonify(success=False, reply="Please Login")    
+
+#+END_SRC
+#+NAME: get_all_pastes
+#+BEGIN_SRC python
+def get_all_pastes():
+    # user_id = session['user_id']
+    # pastes = paste.query.filter(paste.user_id == user_id).all()
+    curr_id = session['user_id']
+    paste_list = Paste.query.filter(curr_id == Paste.user_id).all()
+    url_pre = "/"
+    for paste in paste_list:
+        paste.url = url_pre + paste.url
+    return render_template('mypaste.html', paste_list=paste_list)
+    # return jsonify(success=True, pastes=[paste.to_dict() for paste in
+    # pastes])
+
+#+END_SRC
+#+NAME: delete_paste
+#+BEGIN_SRC python 
+def delete_paste(url):
+    user_id = session['user_id']
+    # print(user_id)
+    paste = Paste.query.filter(
+        Paste.url == url, Paste.user_id == user_id).first()
+    if paste is None:
+        return jsonify(success=False), 404
+    else:
+        db.session.delete(paste)
+        db.session.commit()
+        return jsonify(success=True), 200
+
+#+END_SRC
+
+Our web apllication also supports downloadin of the shared snippets of codes.  
+
+***** User
+Users can make a paste either as a guest or by logging in or registering as a new user.
+#+NAME: for registerd user
+#+BEGIN_SRC python
+    def __init__(self, username, email, password, paste_count, user_type):
+        self.username = username
+        self.email = email
+        self.password = generate_password_hash(password)
+        self.paste_count = paste_count
+        self.user_type = user_type
+#+END_SRC
+#+NAME: for guest user
+#+BEGIN_SRC 
+
+#+END_SRC
+
+User is identified by its *username* and *password*.
+#+NAME: login
+#+BEGIN_SRC python
+def login_user():
+    try:
+        username = request.form['username']
+        password = request.form['password']
+    except KeyError as e:
+        return jsonify({'error': 'All Credentials not filled'}), 400
+
+    user = User.query.filter(User.username == username).first()
+    if(user is None or not user.check_password(password)):
+        return jsonify({'error': 'Invalid Username , User doesnt exist'}), 400
+
+    session['user_id'] = user.id
+
+    return jsonify({'succes': 'Login successful'}), 200
+
+#+END_SRC 
+
+For registering, a user must input his *email-id*, *username* and *password*.
+=password= is stored in encrypted form (not in clear-text) to enhace security.
+
+#+NAME: register_user
+#+BEGIN_SRC python 
+def register_user():
+    username = request.form['username']
+    email = request.form['email']
+    password = request.form['password']
+
+    # except KeyError as e:
+    # return render_template('register.html',error = "%s not sent in the
+    # request" % e.args)
+
+    if '@' not in email:
+        return jsonify({'error': '@ not added in email'}), 400
+
+    u = User(username, email, password, 0, 1)
+    db.session.add(u)
+    try:
+        db.session.commit()
+    except IntegrityError as e:
+        return jsonify({'error': 'Invalid Credentials'}), 400
+
+    return jsonify({'success': 'User Registeration successful'}), 200
+
+#+END_SRC
+Admin feature has also been added.
+
+***** Report
+Pastebin also has the a feature to report pastes which users find offensive.
+Only registered users can report pastes along with the reason to do so.
+
+#+NAME: report_paste 
+#+BEGIN_SRC python
+def __init__(self, paste_id, reason, reporter_id):
+        self.paste_id = paste_id
+        self.reason = reason
+        self.reporter_id = reporter_id
+#+END_SRC
+
+A paste is checked according to its *paste id* and removed after certain number of reports.
+
+** highlight.js
+
+The main feature of pastebin is syntax highlighting, that is, to be able to select the language of paste. This project supports {} languages as of now. This feature was implemented  by using =highlight.js=. 
+*highlight.js* is used for syntax highlighting for web. In most of the cases it detects the language automatically.  
+The bare minimum for using highlight.js on a web page is linking to the library along with one of the styles and calling =initHighlightingOnLoad=
+
+#+BEGIN_SRC html 
+<link rel="stylesheet" href="/path/to/styles/default.css">
+<script src="/path/to/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+#+END_SRC
+	
+This method will find and highlight the code inside of *<pre><code>* tags; it tries to detect the language automatically. If automatic detection doesn’t work for you, 
+you can specify the language in the *class* attribute or can be asked as an input (like in our project) from the user.
+
+#+BEGIN_SRC html
+<pre><code class="C">...</code></pre>
+#+END_SRC
+
+** Download
+The user can download the code according to the language extension given by the owner
+of the paste.
+** Embed
+It is used to include codes saved in pastebin in your websites.
+* Deployment
+** nginx
+To Deploy python apps, we use *nginx* as a *reverse proxy server*. We use *uWSGI* with nginx to deploy python apps like flask. 
+Insight about WSGI - Web Server Gateway Interface (WSGI) is a specification for simple and universal interface between 
+web servers and web applications.
+
+* Self-Signed SSL Certificate
+A self-signed certificate will not validate the identity of your server 
+for your users since it is not signed by one of their web browser's trusted 
+certificate authorities, but it will allow you to encrypt communications with your web clients. 
+example : /*digicert*/ is a trustworthy SSL certificates provider.
