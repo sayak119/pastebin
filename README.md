@@ -11,6 +11,7 @@ Please take in considerations than this web application is still under active de
 * Edit and  delete your pastes.
 * View all your pastes (for members only)
 * Download codes
+* you can now use it on Android without root  
 
 ## Getting Started
 
