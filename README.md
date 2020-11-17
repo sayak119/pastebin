@@ -1,3 +1,7 @@
+
+【c1】YONEXOP12【c1】
+
+
 # A simple Pastebin app using Flask
 
 It is a simple web application made using Flask web micro-framework to implement a Pastebin-like site. 
@@ -11,6 +15,7 @@ Please take in considerations than this web application is still under active de
 * Edit and  delete your pastes.
 * View all your pastes (for members only)
 * Download codes
+* you can now use it on Android without root  
 
 ## Getting Started
 
@@ -38,7 +43,7 @@ If not installed then type the following:
 
 ```
 sudo apt-get update
-sudo apt-get -y update
+
 ```
 
 * Instructions for installing pip
